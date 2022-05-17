@@ -1,0 +1,18 @@
+html,body{
+    margin: 1% 2% 2% 2%;
+}
+
+h1{
+    color: #E74C3C;
+    margin-bottom: 3%;
+    font-size: 200%;
+    font-weight: bold;
+    padding-bottom: 0.5%;
+    border-bottom: 2px solid #E74C3C;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
