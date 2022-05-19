@@ -8,39 +8,39 @@ import {Button, Paper} from "@mui/material";
 
 import {ITeam} from "../types/team";
 
-type TeamProps={
+type TeamProps = {
     team: ITeam;
-    handleAddPoint: (name:string,point:number,id:number) => void;
-    handleSubPoint: (name:string,point:number,id:number) => void;
+    handleAddPoint: (name: string, point: number, id: number) => void;
+    handleSubPoint: (name: string, point: number, id: number) => void;
 }
-const Team: React.FC <TeamProps>= (props:TeamProps) => {
-    const [point,setPoint] = useState<number | null>(null);
-    const [error,setError] = useState(false);
-    const{name,points,id} = props.team;
+const Team: React.FC<TeamProps> = (props: TeamProps) => {
+    const [point, setPoint] = useState<number | null>(null);
+    const [error, setError] = useState(false);
+    const {name, points, id} = props.team;
 
-    const handleAdd= (e:FormEvent) => {
+    const handleAdd = (e: FormEvent) => {
         e.preventDefault();
-        if (!point){
+        if (!point) {
             setError(true);
             return;
         }
-        let newPoint= points+point;
-        props.handleAddPoint(name,newPoint,id);
+        let newPoint = points + point;
+        props.handleAddPoint(name, newPoint, id);
         setPoint(null);
     }
 
-    const handleSub= (e:FormEvent) => {
+    const handleSub = (e: FormEvent) => {
         e.preventDefault();
-        if (!point){
+        if (!point) {
             setError(true)
             return;
         }
-        let newPoint= points-point;
-        props.handleSubPoint(name,newPoint,id);
+        let newPoint = points - point;
+        props.handleSubPoint(name, newPoint, id);
         setPoint(null);
     }
 
-    return(
+    return (
         <Grid
             item
             xs={12} sm={6} md={4}
@@ -63,7 +63,7 @@ const Team: React.FC <TeamProps>= (props:TeamProps) => {
                     <TextField
                         error={error}
                         id={error ? "outlined-error-helper-text" : "outlined-basic"}
-                        helperText ={error ? "Cannot be empty!" : null}
+                        helperText={error ? "Cannot be empty!" : null}
                         onFocus={() => setError(false)}
                         label={"Points"}
                         type="number"
@@ -73,18 +73,18 @@ const Team: React.FC <TeamProps>= (props:TeamProps) => {
                         size={'small'}
                         value={point ? point : ''}
                         style={{
-                            marginTop:'2%',
-                            marginBottom:'2%'
+                            marginTop: '2%',
+                            marginBottom: '2%'
                         }}
                         variant="outlined"
-                        onChange={(e)=>setPoint(parseFloat(e.target.value))}
+                        onChange={(e) => setPoint(parseFloat(e.target.value))}
                     />
                     <Grid
                         container
                         xs={6}
                         alignItems="center"
                         justifyContent="space-evenly"
-                        >
+                    >
                         <Grid item>
                             <Button
                                 variant="contained"
